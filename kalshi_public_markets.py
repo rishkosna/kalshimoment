@@ -24,3 +24,4 @@ market_data = client.get_public_markets()
 df_unfiltered = pandas.json_normalize(market_data, record_path=['markets'])
 df = df_unfiltered[['id', 'category', 'mini_title', 'yes_ask', 'create_date', 'close_date']]
 simple_df(df)
+display(df)

@@ -1,6 +1,8 @@
 import requests
 import json
 from datetime import datetime as dt
+from datetime import *
+from sympy import re
 from urllib3.exceptions import HTTPError
 from dateutil import parser
 from typing import Any, Dict, List, Optional, Tuple
@@ -111,6 +113,7 @@ class ExchangeClient(KalshiClient):
         self.token = result["token"]
         self.user_id = result["user_id"]
         self.markets_url = "/v1/markets"
+        self.active_url = "/v1/active_markets"
 
     def get_market_url(self, market_id:str) -> str:
         return self.markets_url + "/" + market_id
@@ -129,3 +132,5 @@ class ExchangeClient(KalshiClient):
         order_book_url = base_url + "/order_book"
         dictr = self.get(order_book_url)
         return dictr
+    
+       

@@ -20,10 +20,10 @@ def simplify_time (str) :
     return new
 
 def simple_df (df) :
+    now = datetime.now()
     df['create_time'] = df['create_date'].apply(simplify_time)
     df['close_time'] = df['close_date'].apply(simplify_time)
     df['create_date'] = df['create_date'].apply(simplify_date)
     df['close_date'] = df['close_date'].apply(simplify_date)
-    df.drop(df.index[df['close_date'] <= date.today()], inplace=True)
-    df.drop(df.index[df['close_date'] > (date.today() + timedelta(days=1))], inplace=True)
+    df.drop(df.index[df['close_date'] < date.today()], inplace=True)
     
