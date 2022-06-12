@@ -26,4 +26,5 @@ def simple_df (df) :
     df['create_date'] = df['create_date'].apply(simplify_date)
     df['close_date'] = df['close_date'].apply(simplify_date)
     df.drop(df.index[df['close_date'] < date.today()], inplace=True)
+    df.sort_values(by='close_date')
     
