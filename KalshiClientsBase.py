@@ -132,5 +132,7 @@ class ExchangeClient(KalshiClient):
         order_book_url = base_url + "/order_book"
         dictr = self.get(order_book_url)
         return dictr
-    
-       
+
+    def get_active_markets(self, par:dict):
+        dictr = self.get(self.active_url, par)
+        return dictr    
